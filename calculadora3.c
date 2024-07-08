@@ -1,4 +1,4 @@
-// Calculadora usando switch case
+// Calculadora usando switch case e laço de exclusão
 
 // bibliotecas
 #include <stdio.h>
@@ -7,11 +7,11 @@
 
 // Função Principal
 int main( ) {
-    // Seleção de idioma para pt-br
+    // Idioma em pt-br
     setlocale(LC_ALL, "Portuguese");
     system("cls");
 
-    // Variáveis da calculadora
+    //  Variáveis
     int opcao, x, y;
 
     // Menu Principal
@@ -21,13 +21,14 @@ int main( ) {
     printf("3 - Divisao (nao dividir por 0)\n");
     printf("4 - Multiplicacao\n");
     printf("5 - Resto da divisao\n");
+    printf("0 - Sair\n");
     scanf("%d", &opcao);
 
-    // Lê o valor das variáveis X e Y informado pelo usuário
+    // Lê o valor das variáveis
     printf("Informe os valores de X e Y: ");
     scanf("%d %d", &x, &y);
 
-    // Switch Case
+    // Switch case
     switch (opcao) {
         // Soma
         case 1:
@@ -40,8 +41,13 @@ int main( ) {
             break;
 
         // Divisão
-        case 3:
-            printf("Divisao: %.1f\n", x / (float)y);
+        case 3: 
+            // Divisor igual a zero
+            if(y == 0)
+                printf("Nao e possivel dividir por 0\n");
+            // Divisao diferente de zero
+            else
+                printf("Divisao: %.1f\n", x / (float)y);
             break;
 
         // Multiplicação
@@ -54,7 +60,12 @@ int main( ) {
             printf("Resto da divisao: %d\n\n", x % y);
             break;
 
-        // Nenhuma das opções do menu principal
+        // Saída
+        case 6:
+            printf("Saindo...\n");
+            break;
+
+        // Opção Inválida
         default:
             printf("Opcao invalida\n");
             break;
